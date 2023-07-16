@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
 
     public int Day;
-    public float timeLeft;
+    public float timeLeft, timeOfDay;
     public bool isWorkHour;
     public Player player;
     public float dayIncome, dayRevenue;
@@ -33,9 +33,15 @@ public class GameManager : MonoBehaviour
     }
     public void RunBusiness()
     {
+        if (timeOfDay >= 1)
+        {
+            timeOfDay = 0;
+            Day++;
+            isWorkHour = false;
+            Close();
+
+        }
         isWorkHour = true;
-       
-       
     }
     public void Close()
     {
