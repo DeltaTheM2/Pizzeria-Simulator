@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        equipment = new Equipment();
         customers = new List<Customer>();
         Day = 1;
         timeLeft = 8f;
@@ -43,7 +44,7 @@ public class GameManager : MonoBehaviour
         float orderRevenue = customer.order.CalculateTotalPrice();
         totalRevenue += orderRevenue;
         foreach (Customer _customer in customers) {
-            _customer.UpdateWaitTime(Time.deltaTime);
+        customer.UpdateWaitTime(Time.deltaTime);
         }
     }
     public void EndDay()

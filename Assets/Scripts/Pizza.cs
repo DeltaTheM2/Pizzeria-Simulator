@@ -20,7 +20,7 @@ public class Pizza
     {
         get
         {
-            switch (type    )  
+            switch (type)  
             {
                 case PizzaType.BaconPepperoni: return 7.0f;
                 case PizzaType.Cheese: return 5.0f;

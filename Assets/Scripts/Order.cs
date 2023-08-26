@@ -21,7 +21,7 @@ public class Order
         float totalCookingTime = 0;
         foreach (Pizza pizza in pizzas)
         {
-            totalCookingTime += pizza.CookingTime * equipment.GetCookingTimeMultiplier();
+            totalCookingTime += pizza.CookingTime * equipment.GetCookingTimeMultiplier(pizza.type);
         }
         return totalCookingTime;
     }
