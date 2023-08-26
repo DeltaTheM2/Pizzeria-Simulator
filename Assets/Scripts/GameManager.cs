@@ -6,6 +6,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public List<Customer> customers { get; private set; }
+    public float totalRevenue { get; private set; }
+    public float totalCosts { get; set; } = 50.00f;
+    public float profit => totalRevenue - totalCosts;
+
+    public Equipment equipment{ get; set; }
+
 
     public int Day;
     public float timeLeft, timeOfDay;
@@ -16,36 +23,32 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        customers = new List<Customer>();
         Day = 1;
         timeLeft = 8f;
         isWorkHour = true;
+        StartDay();
     }
     private void Update()
     {
-        if (isWorkHour)
-        {
-            RunBusiness();
-        }
-        else
-        {
-            Close();
+       
+    }
+    public void StartDay()
+    {
+       totalRevenue = 0;
+        customers.Clear();
+    }
+    public void ProcessOrder(Customer customer)
+    {
+        float orderRevenue = customer.order.CalculateTotalPrice();
+        totalRevenue += orderRevenue;
+        foreach (Customer _customer in customers) {
+            _customer.UpdateWaitTime(Time.deltaTime);
         }
     }
-    public void RunBusiness()
+    public void EndDay()
     {
-        if (timeOfDay >= 1)
-        {
-            timeOfDay = 0;
-            Day++;
-            isWorkHour = false;
-            Close();
-
-        }
-        isWorkHour = true;
-    }
-    public void Close()
-    {
-        isWorkHour = false;
-        player.currentMoney += dayRevenue;
+        totalRevenue -= totalCosts;
+        //Add other tasks afterwards.
     }
 }
