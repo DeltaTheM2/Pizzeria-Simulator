@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -20,6 +21,9 @@ public class GameManager : MonoBehaviour
     public Player player;
     public float dayIncome, dayRevenue;
 
+    public Transform OrderContent;
+    public GameObject orderTextPrefab;
+
 
     private void Start()
     {
@@ -30,9 +34,10 @@ public class GameManager : MonoBehaviour
         isWorkHour = true;
         StartDay();
     }
-    private void Update()
+    public void UpdateOrderUI(Customer _customer)
     {
-       
+        TextMeshProUGUI orderText = Instantiate(orderTextPrefab, OrderContent).GetComponent<TextMeshProUGUI>();
+        orderText.text = $"{_customer.order}: {_customer.order.CalculateTotalCookingTime(equipment)}s";
     }
     public void StartDay()
     {
