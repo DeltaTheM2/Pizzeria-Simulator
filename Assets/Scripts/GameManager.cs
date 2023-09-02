@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     public Transform OrderContent;
     public GameObject orderTextPrefab;
 
+    public List<GameObject> CustomerPrefabs = new List<GameObject>();
+
 
     private void Start()
     {
@@ -37,12 +39,19 @@ public class GameManager : MonoBehaviour
     public void UpdateOrderUI(Customer _customer)
     {
         TextMeshProUGUI orderText = Instantiate(orderTextPrefab, OrderContent).GetComponent<TextMeshProUGUI>();
-        orderText.text = $"{_customer.order}: {_customer.order.CalculateTotalCookingTime(equipment)}s";
+        orderText.text = $"{_customer.order}: {_customer.order.CalculateTotalCookingTime()}s";
     }
     public void StartDay()
     {
-       totalRevenue = 0;
+        totalRevenue = 0;
         customers.Clear();
+        customers.Add(CustomerPrefabs[Random.Range(0, CustomerPrefabs.Count - 1)].GetComponent<Customer>());
+        foreach(Customer c in customers)
+        {
+            //Instantiate the customers one at a time
+            //Instantiate(c);
+        }
+
     }
     public void ProcessOrder(Customer customer)
     {
