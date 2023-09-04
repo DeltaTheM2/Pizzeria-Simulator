@@ -4,7 +4,15 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-
+/*
+ * once you press a button to begin a day the StartDay() will be called and a day will be started.
+ * in this function a new list of customers should be made. 
+ * the Customers then wikll be spawned in different times during the day that are random, and then when they spawn they will
+ * have to move towards the counter. when They get to the counter they will need to order.
+ * after they place their order, they will move towards another place or sit down and just wait there till their order is ready.
+ * after it's ready, they will walk to the counter, pay the money and walk out of the restaurant
+ * I plan to use lists of triggers for the places that the customers can wait, sit and walk to ensure that they do not go in each other. 
+ */
 public class GameManager : MonoBehaviour
 {
     public List<Customer> customers { get; private set; }
