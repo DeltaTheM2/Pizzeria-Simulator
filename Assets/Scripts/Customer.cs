@@ -3,16 +3,37 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Customer
+public class Customer : MonoBehaviour
 {
     public Order order;
-    public float waitTime { get; private set; }
-    public float waitTimeThreshold { get; private set; }
+
+    // wait time for the order to get ready
+    public float waitTime;
+    public float waitTimeThreshold; 
+
+    public float placingOrderTime = 0f;
+    public float maxOrderTime = 5f; // Time in seconds to place order
+    public Transform seatingNode = null;
 
 
-    public bool isServed { get; private set; } = false;
-    public bool hasLeft { get; private set; } = false;
+    public bool isServed = false;
+    public bool hasLeft = false;
 
+    public enum State
+    {
+        Entering,
+        Walking,
+        Sitting,
+        Waiting,
+        placingOrder,
+        pickingUp,
+        Exiting
+    }
+    public State state;
+
+
+    public float speed = 3.0f;
+    public int currentNodeIndex = 0;
 
     private void Start()
     {
@@ -24,6 +45,12 @@ public class Customer
     public Customer()
     {
         waitTimeThreshold = Random.Range(10.0f, 20.0f);
+    }
+
+    public void MoveTowards(Transform target)
+    {
+        Vector3 direction = (target.position - transform.position).normalized;
+        transform.position += direction * speed * Time.deltaTime;
     }
 
     public void UpdateWaitTime(float deltaTime)
