@@ -4,35 +4,24 @@ using UnityEngine;
 
 public class Order
 {
-    public List<Pizza> pizzas { get; private set; } = new List<Pizza>();
+    static int current_id = 1;
+    public int id;
+    public List<Pizza> pizzas = new List<Pizza>();
+    public float cookTimeRemaining;
+    public float cost;
 
-    public void StartOrder()
+    public Order()
     {
+        id = current_id;
+        current_id++;
+
         int pizzaCount = Random.Range(1, 6);
         for (int i = 0; i < pizzaCount; i++)
         {
             Pizza.PizzaType randomType = (Pizza.PizzaType)Random.Range(0, System.Enum.GetValues(typeof(Pizza.PizzaType)).Length);
             pizzas.Add(new Pizza(randomType));
-
+            cookTimeRemaining += pizzas[i].CookingTime;
+            cost += pizzas[i].Price;
         }
-    }
-
-    public float CalculateTotalCookingTime()
-    {
-        float totalCookingTime = 0;
-        foreach (Pizza pizza in pizzas)
-        {
-            totalCookingTime += pizza.CookingTime;
-        }
-        return totalCookingTime;
-    }
-    public float CalculateTotalPrice()
-    {
-        float totalPrice = 0;
-        foreach (Pizza pizza in pizzas)
-        {
-            totalPrice += pizza.Price;
-        }
-        return totalPrice;
     }
 }

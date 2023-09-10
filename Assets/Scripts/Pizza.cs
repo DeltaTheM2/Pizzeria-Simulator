@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,9 +31,6 @@ public class Pizza
                 case PizzaType.Supreme: return 8.0f;
                 case PizzaType.Works: return 10.0f;
                 default: return 5.0f;
-
-
-
             }
         }    
     }
@@ -50,14 +48,25 @@ public class Pizza
                 case PizzaType.Supreme: return 25.0f;
                 case PizzaType.Works: return 27.0f;
                 default: return 5.0f;
-
-
-
             }
         }
     }
     public Pizza(PizzaType type)
     {
         this.type = type;
+    }
+
+    public override String ToString() {
+        switch (type)
+        {
+            case PizzaType.BaconPepperoni: return "Bacon Pepperoni";
+            case PizzaType.Cheese: return "Cheese";
+            case PizzaType.MeatLovers: return "Meat Lovers";
+            case PizzaType.Pepperoni: return "Pepperoni";
+            case PizzaType.Veggie: return "Veggie";
+            case PizzaType.Supreme: return "Supreme";
+            case PizzaType.Works: return "Works";
+            default: return "Normal";
+        }
     }
 }
