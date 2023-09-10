@@ -8,7 +8,7 @@ public class DayManager : MonoBehaviour
     int customerCount = 0;
     public int minAmountCustomers, maxAmountCustomers;
     public int minWaitDuration, maxWaitDuration;
-    public GameObject customerPrefab;
+    public GameObject[] customerPrefab;
     public Transform spawnPoint;
 
     private static DayManager _instance;
@@ -62,6 +62,6 @@ public class DayManager : MonoBehaviour
         //this is [minWaitDuration, maxWaitDuration)
         yield return new WaitForSeconds(Random.Range(minWaitDuration, maxWaitDuration));
 
-        Instantiate(customerPrefab, spawnPoint.position, Quaternion.identity);
+        Instantiate(customerPrefab[Random.Range(0, customerPrefab.Length)], spawnPoint.position, Quaternion.identity);
     }
 }

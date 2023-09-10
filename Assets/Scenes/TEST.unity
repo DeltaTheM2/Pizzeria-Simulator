@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18300837, g: 0.22869337, b: 0.30677772, a: 1}
+  m_IndirectSpecularColor: {r: 0.18300797, g: 0.22869256, b: 0.30677643, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -16336,7 +16336,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022943873}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.785, y: 0, z: 0.3039999}
+  m_LocalPosition: {x: 18.77, y: 0.08, z: 0.3039999}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24492,7 +24492,43 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1499427237}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1143372511}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SwitchToGameplay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1531216333}
+        m_TargetAssemblyTypeName: DayManager, Assembly-CSharp
+        m_MethodName: StartDay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1531216333}
+        m_TargetAssemblyTypeName: DayManager, Assembly-CSharp
+        m_MethodName: OnDayOver
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1499427237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25170,7 +25206,11 @@ MonoBehaviour:
   maxAmountCustomers: 6
   minWaitDuration: 0
   maxWaitDuration: 2
-  customerPrefab: {fileID: 1710617830568398833, guid: d05cf5ceb3876414b96d3374d93c9938, type: 3}
+  customerPrefab:
+  - {fileID: 1710617830568398833, guid: d05cf5ceb3876414b96d3374d93c9938, type: 3}
+  - {fileID: 2980686404275488637, guid: 982c57a8508516e4da5d109d073f951e, type: 3}
+  - {fileID: 2544076439500160139, guid: 93b2cde81650c3549806d93b38173ab7, type: 3}
+  - {fileID: 7836395014183570086, guid: ff1a52fa87b9bb44c832a6fbcb9c3ef5, type: 3}
   spawnPoint: {fileID: 1022943874}
 --- !u!4 &1531216334
 Transform:

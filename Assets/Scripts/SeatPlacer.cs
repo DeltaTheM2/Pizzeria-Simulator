@@ -24,6 +24,7 @@ public class SeatPlacer : MonoBehaviour
                     Vector3 clickPoint = hit.point;
 
                     Instantiate(chairPrefab, clickPoint, Quaternion.identity);
+                    DayManager.Instance.maxAmountCustomers++;
                 }
             }
         }

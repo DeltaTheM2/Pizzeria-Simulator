@@ -1082,7 +1082,7 @@ GameObject:
   - component: {fileID: 1150536392854407768}
   - component: {fileID: 3141980654819281733}
   - component: {fileID: -3414872253738954166}
-  - component: {fileID: -3244715815549113309}
+  - component: {fileID: 1023276964918751143}
   m_Layer: 0
   m_Name: Josh Idle
   m_TagString: Customer
@@ -1159,17 +1159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f39fe0b4a17253242a0ee2c66492aef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  order: {fileID: 0}
-  waitTime: 0
-  waitTimeThreshold: 0
-  placingOrderTime: 4
-  maxOrderTime: 5
-  seatingNode: {fileID: 0}
-  isServed: 0
-  hasLeft: 0
-  state: 0
   speed: 3
-  currentNodeIndex: 0
 --- !u!54 &-3414872253738954166
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1186,18 +1176,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &-3244715815549113309
-MonoBehaviour:
+--- !u!195 &1023276964918751143
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2980686404275488637}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5e0c3cc32ab21f40988feb3d332f706, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0.5
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 1
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &3001186263362477800
 GameObject:
   m_ObjectHideFlags: 0
