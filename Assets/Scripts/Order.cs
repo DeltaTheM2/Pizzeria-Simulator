@@ -23,5 +23,6 @@ public class Order
             cookTimeRemaining += pizzas[i].CookingTime;
             cost += pizzas[i].Price;
         }
+        cookTimeRemaining -= 0.05f * cookTimeRemaining * GameManager.Instance.workers;
     }
 }

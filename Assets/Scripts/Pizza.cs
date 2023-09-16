@@ -40,13 +40,13 @@ public class Pizza
         {
             switch (type)
             {
-                case PizzaType.BaconPepperoni: return 21.0f;
-                case PizzaType.Cheese: return 14.0f;
-                case PizzaType.MeatLovers: return 23.0f;
-                case PizzaType.Pepperoni: return 19.0f;
-                case PizzaType.Veggie: return 15.0f;
-                case PizzaType.Supreme: return 25.0f;
-                case PizzaType.Works: return 27.0f;
+                case PizzaType.BaconPepperoni: return 15.0f;
+                case PizzaType.Cheese: return 11.0f;
+                case PizzaType.MeatLovers: return 16.0f;
+                case PizzaType.Pepperoni: return 16.0f;
+                case PizzaType.Veggie: return 14.0f;
+                case PizzaType.Supreme: return 17.0f;
+                case PizzaType.Works: return 20.0f;
                 default: return 5.0f;
             }
         }

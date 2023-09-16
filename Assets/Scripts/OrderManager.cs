@@ -66,13 +66,10 @@ public class OrderManager : MonoBehaviour
     }
 
     IEnumerator CookOrder(CustomerMovement c, Order order) {
-        foreach (Pizza p in order.pizzas) {
-            //sorry this code is not that good
-            for (float i = 0; i < p.CookingTime; i+=Time.deltaTime)
-            {
-                yield return null; //wait a frame
-                order.cookTimeRemaining -= Time.deltaTime;
-            }
+        while (order.cookTimeRemaining > 0)
+        {
+            yield return null; //wait a frame
+            order.cookTimeRemaining -= Time.deltaTime;
         }
         orders.Remove(c);
         

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class SeatPlacer : MonoBehaviour
 {
@@ -9,11 +10,15 @@ public class SeatPlacer : MonoBehaviour
 
     void Update()
     {
+        if (FundManager.Instance.funds <= 50) {
+            GameManager.Instance.ToggleSeatPlacer();
+        }
+
         if (Input.GetMouseButtonDown(0)) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit)&& hit.collider.CompareTag("Store Floor") && FundManager.Instance.funds > price)
+            if (Physics.Raycast(ray, out hit)&& hit.collider.CompareTag("Store Floor") && !EventSystem.current.IsPointerOverGameObject() && FundManager.Instance.funds > price)
             {
                 FundManager.Instance.funds -= price;
 
@@ -24,7 +29,6 @@ public class SeatPlacer : MonoBehaviour
                     Vector3 clickPoint = hit.point;
 
                     Instantiate(chairPrefab, clickPoint, Quaternion.identity);
-                    DayManager.Instance.maxAmountCustomers++;
                 }
             }
         }

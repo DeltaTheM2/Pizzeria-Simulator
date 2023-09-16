@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DayManager : MonoBehaviour
 {
-    public int day = 1;
+    public int day = 0;
     int customerCount = 0;
     public int minAmountCustomers, maxAmountCustomers;
     public int minWaitDuration, maxWaitDuration;
-    public GameObject[] customerPrefab;
+    public GameObject[] customerPrefabs;
     public Transform spawnPoint;
 
     private static DayManager _instance;
@@ -33,14 +33,8 @@ public class DayManager : MonoBehaviour
     public void OnCustomerCompleted(CustomerMovement c) {
         customerCount--;
         if (customerCount <= 0) {
-            print("Day Over");
-            GameManager.Instance.SwitchToUpgrade();
+            GameManager.Instance.OnDayOver();
         }
-    }
-
-    public void OnDayOver() {
-        day++;
-        print("Day Over");
     }
 
     public void StartDay()
@@ -56,12 +50,19 @@ public class DayManager : MonoBehaviour
         }
     }
 
+    public void OnAfterFirstDay() {
+        day++;
+        minAmountCustomers += Random.Range(1,3);
+        maxAmountCustomers += Random.Range(2,3);
+    }
+
     IEnumerator InstantiateCustomer()
     {
         //get a random duration
         //this is [minWaitDuration, maxWaitDuration)
         yield return new WaitForSeconds(Random.Range(minWaitDuration, maxWaitDuration));
 
-        Instantiate(customerPrefab[Random.Range(0, customerPrefab.Length)], spawnPoint.position, Quaternion.identity);
+        GameObject customerPrefab = customerPrefabs[Random.Range(0, customerPrefabs.Length-1)];
+        Instantiate(customerPrefab, spawnPoint.position, Quaternion.identity);
     }
 }

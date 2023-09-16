@@ -7,12 +7,13 @@ using UnityEngine.AI;
 public class CustomerMovement : MonoBehaviour
 {
     private NavMeshAgent agent;
+    Animator animator;
     public float speed = 3.0f;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-    
+        animator = GetComponent<Animator>();
         LineManager.Instance.EnqueueCustomer(this);
     }
 
@@ -34,22 +35,28 @@ public class CustomerMovement : MonoBehaviour
     }
 
     public void NotifyOrderCompleted() {
+        if (agent.isOnNavMesh) {
+            agent.isStopped = true;
+            agent.ResetPath();
+        }
         WaitingManager.Instance.FreeSeat();
         StartCoroutine(PickUpAndLeave());
     }
 
     IEnumerator MoveToLineSpot(Vector3 spotPos, bool isFirstInLine) {
         agent.isStopped = false;
+        animator.SetBool("isMoving", true);
         agent.SetDestination(spotPos);
 
         while (true) {
             if (!agent.pathPending) {
                 //if the agent is pretty close
-                if (agent.remainingDistance > agent.stoppingDistance) {
+                if (agent.isOnNavMesh && agent.remainingDistance > agent.stoppingDistance) {
                     //continue moving as normal
                     yield return null;
                 } else {
                     //stop
+                    animator.SetBool("isMoving", false);
                     break;
                 }
             } else {
@@ -66,16 +73,19 @@ public class CustomerMovement : MonoBehaviour
 
     IEnumerator MoveToSeatSpot(Vector3 spotPos) {
         agent.isStopped = false;
+        animator.SetBool("isMoving", true);
         agent.SetDestination(spotPos);
 
         while (true) {
             if (!agent.pathPending) {
                 //if the agent is pretty close
-                if (agent.remainingDistance > agent.stoppingDistance) {
+                if (agent.isOnNavMesh && agent.remainingDistance > agent.stoppingDistance) {
                     //continue moving as normal
                     yield return null;
                 } else {
                     //stop
+                    animator.SetBool("isMoving", false);
+                    animator.SetBool("isSitting", true);
                     break;
                 }
             } else {
@@ -86,16 +96,19 @@ public class CustomerMovement : MonoBehaviour
 
     IEnumerator PickUpAndLeave() {
         agent.isStopped = false;
+        animator.SetBool("isMoving", true);
+        animator.SetBool("isSitting", false);
         agent.SetDestination(OrderManager.Instance.pickUpSpot.position);
 
         while (true) {
             if (!agent.pathPending) {
                 //if the agent is pretty close
-                if (agent.remainingDistance > agent.stoppingDistance) {
+                if (agent.isOnNavMesh && agent.remainingDistance > agent.stoppingDistance) {
                     //continue moving as normal
                     yield return null;
                 } else {
                     //stop
+                    animator.SetBool("isMoving", false);
                     break;
                 }
             } else {
@@ -104,16 +117,19 @@ public class CustomerMovement : MonoBehaviour
         }
 
         agent.isStopped = false;
+        animator.SetBool("isMoving", true);
+        animator.SetBool("isSitting", false);
         agent.SetDestination(OrderManager.Instance.exitSpot.position);
 
         while (true) {
             if (!agent.pathPending) {
                 //if the agent is pretty close
-                if (agent.remainingDistance > agent.stoppingDistance) {
+                if (agent.isOnNavMesh && agent.remainingDistance > agent.stoppingDistance) {
                     //continue moving as normal
                     yield return null;
                 } else {
                     //stop
+                    animator.SetBool("isMoving", false);
                     break;
                 }
             } else {
