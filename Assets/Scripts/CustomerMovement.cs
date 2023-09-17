@@ -21,7 +21,7 @@ public class CustomerMovement : MonoBehaviour
         StartCoroutine(MoveToLineSpot(spotPos, isFirstInLine));
     }
 
-    public void MoveToSeat(Vector3 pos) {
+    public void MoveToSeat(Transform pos) {
         StartCoroutine(MoveToSeatSpot(pos));
     }
 
@@ -30,13 +30,14 @@ public class CustomerMovement : MonoBehaviour
         if (destinationSeat == null) {
             //do something IDK
         } else {
-            MoveToSeat(destinationSeat.position);
+            MoveToSeat(destinationSeat);
         }
     }
 
     public void NotifyOrderCompleted() {
         if (agent.isOnNavMesh) {
             agent.isStopped = true;
+            agent.updateRotation = true;
             agent.ResetPath();
         }
         WaitingManager.Instance.FreeSeat();
@@ -45,6 +46,7 @@ public class CustomerMovement : MonoBehaviour
 
     IEnumerator MoveToLineSpot(Vector3 spotPos, bool isFirstInLine) {
         agent.isStopped = false;
+        agent.updateRotation = true;
         animator.SetBool("isMoving", true);
         agent.SetDestination(spotPos);
 
@@ -71,10 +73,11 @@ public class CustomerMovement : MonoBehaviour
         }
     }
 
-    IEnumerator MoveToSeatSpot(Vector3 spotPos) {
+    IEnumerator MoveToSeatSpot(Transform spotPos) {
         agent.isStopped = false;
+        agent.updateRotation = true;
         animator.SetBool("isMoving", true);
-        agent.SetDestination(spotPos);
+        agent.SetDestination(spotPos.position);
 
         while (true) {
             if (!agent.pathPending) {
@@ -86,16 +89,24 @@ public class CustomerMovement : MonoBehaviour
                     //stop
                     animator.SetBool("isMoving", false);
                     animator.SetBool("isSitting", true);
+                    print(transform.rotation.x + " " + spotPos.transform.rotation.y + " " + spotPos.transform.rotation.z);
+                    agent.updateRotation = false;
+                    transform.rotation = Quaternion.Euler(transform.rotation.x, spotPos.transform.rotation.y, spotPos.transform.rotation.z);
+
                     break;
                 }
             } else {
                 yield return null;
             }
         }
+
+        
+        animator.SetBool("isSitting", true);
     }
 
     IEnumerator PickUpAndLeave() {
         agent.isStopped = false;
+        agent.updateRotation = true;
         animator.SetBool("isMoving", true);
         animator.SetBool("isSitting", false);
         agent.SetDestination(OrderManager.Instance.pickUpSpot.position);
