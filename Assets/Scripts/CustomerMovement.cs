@@ -89,9 +89,9 @@ public class CustomerMovement : MonoBehaviour
                     //stop
                     animator.SetBool("isMoving", false);
                     animator.SetBool("isSitting", true);
-                    print(transform.rotation.x + " " + spotPos.transform.rotation.y + " " + spotPos.transform.rotation.z);
+                    print(Quaternion.Euler(transform.rotation.x ,spotPos.localEulerAngles.y , spotPos.transform.rotation.z));
                     agent.updateRotation = false;
-                    transform.rotation = Quaternion.Euler(transform.rotation.x, spotPos.transform.rotation.y, spotPos.transform.rotation.z);
+                    this.transform.rotation = Quaternion.Euler(transform.rotation.x, spotPos.transform.localEulerAngles.y, spotPos.localEulerAngles.z);
 
                     break;
                 }
