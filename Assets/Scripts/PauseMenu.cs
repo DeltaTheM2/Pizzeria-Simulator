@@ -1,9 +1,16 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
     public bool isPaused = false;
     public GameObject pauseMenuUI;
+
+    private void Awake()
+    {
+        pauseMenuUI.SetActive(false);
+        isPaused = false;
+    }
 
     void Update()
     {
@@ -32,5 +39,9 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
+    }
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }
