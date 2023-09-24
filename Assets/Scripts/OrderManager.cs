@@ -12,6 +12,7 @@ public class OrderManager : MonoBehaviour
 
     private static OrderManager _instance;
     public static OrderManager Instance { get { return _instance; } }
+    public Animator cashier;
 
     private void Awake()
     {
@@ -50,7 +51,7 @@ public class OrderManager : MonoBehaviour
         while (!WaitingManager.Instance.VacantSeatAvailable()) {
             yield return null;
         }
-
+        cashier.SetBool("isTalking", true);
         //we can just make up an order, the customer does not need to maintain its own order
         Order o = new Order();
         orders.Add(customer, o);
@@ -63,6 +64,7 @@ public class OrderManager : MonoBehaviour
 
         //dequeue the line
         LineManager.Instance.DequeueCustomer();
+        cashier.SetBool("isTalking", false);
     }
 
     IEnumerator CookOrder(CustomerMovement c, Order order) {

@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour 
 {
@@ -81,13 +82,19 @@ public class GameManager : MonoBehaviour
     }
 
     public void OnDayOver() {
-        float utilities = 150;
+        float utilities = 100;
         float workerCost = workers * 25;
 
         if (FundManager.Instance.funds - utilities - workerCost <= 0) {
-            losePanel.SetActive(true);
+            Bankrupt();
         } else {
             SwitchToUpgrade();
         }
+    }
+
+    public void Bankrupt()
+    {
+        losePanel.SetActive(true);
+        SceneManager.LoadScene("Menu");
     }
 }
