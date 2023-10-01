@@ -5,9 +5,10 @@ public class PauseMenu : MonoBehaviour
 {
     public bool isPaused = false;
     public GameObject pauseMenuUI;
-
+    public CharacterController player;
     private void Awake()
     {
+        player = FindObjectOfType<CharacterController>();
         pauseMenuUI.SetActive(false);
         isPaused = false;
     }
@@ -29,6 +30,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
+        player.enabled = true;
+        Cursor.lockState = CursorLockMode.Locked;
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
@@ -36,6 +39,8 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
+        player.enabled = false;
+        Cursor.lockState = CursorLockMode.None;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
