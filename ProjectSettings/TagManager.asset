@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Customer
   - Store Floor
+  - Car
   layers:
   - Default
   - TransparentFX
