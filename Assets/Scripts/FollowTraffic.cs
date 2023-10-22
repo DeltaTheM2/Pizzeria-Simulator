@@ -14,7 +14,7 @@ public class FollowTraffic : MonoBehaviour
 
             float distanceToFinish = Vector3.Distance(transform.position, finishPoint.transform.position);
 
-            if(distanceToFinish < 0.1f)
+            if(distanceToFinish > 0.1f)
                 transform.position = Vector3.MoveTowards(transform.position, finishPoint.transform.position, speed * Time.deltaTime);
 
 
