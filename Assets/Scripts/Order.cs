@@ -18,7 +18,7 @@ public class Order
         int pizzaCount = Random.Range(1, 6);
         for (int i = 0; i < pizzaCount; i++)
         {
-            Pizza.PizzaType randomType = (Pizza.PizzaType)Random.Range(0, System.Enum.GetValues(typeof(Pizza.PizzaType)).Length);
+            Pizza.PizzaType randomType = (Pizza.PizzaType)Random.Range(0,Pizza.unlockedPizza);
             pizzas.Add(new Pizza(randomType));
             cookTimeRemaining += pizzas[i].CookingTime;
             cost += pizzas[i].Price;

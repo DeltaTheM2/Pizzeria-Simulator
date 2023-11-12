@@ -4,8 +4,9 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour 
+public class GameManager : MonoBehaviour
 {
     public Camera gameCamera;
     public Camera upgradeCamera;
@@ -14,13 +15,17 @@ public class GameManager : MonoBehaviour
     public GameObject[] upgradeThings;
     public GameObject losePanel;
 
+    public Button pizzaButton;
+    private Color toggleColor = Color.gray;
+    private Color normalColor = Color.white;
+
     public SeatPlacer seatPlacer;
     public bool currentlyPlacingSeats;
     public int workers;
 
     private static GameManager _instance;
     public static GameManager Instance { get { return _instance; } }
-    
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -30,7 +35,7 @@ public class GameManager : MonoBehaviour
             _instance = this;
         }
         DontDestroyOnLoad(this.gameObject);
-    
+
         currentlyPlacingSeats = false;
         seatPlacer.enabled = false;
 
@@ -66,14 +71,26 @@ public class GameManager : MonoBehaviour
         seatPlacer.enabled = !seatPlacer.enabled;
         currentlyPlacingSeats = !currentlyPlacingSeats;
     }
-
+    public void TogglePizzaUnlocker()
+    {
+        pizzaButton.interactable = !pizzaButton.interactable;
+        //pizzaButton.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "All unlocked";
+        pizzaButton.image.color = toggleColor;
+    }
     public void AddWorker() {
         if (FundManager.Instance.funds >= 100) {
             FundManager.Instance.funds -= 100;
             workers++;   
         }
     }
-
+    public void unlockPizza()
+    {
+        if (FundManager.Instance.funds >= 200 && Pizza.unlockedPizza < 7)
+        {
+            Pizza.unlockedPizza++;
+            FundManager.Instance.funds -= 200;
+        }
+    }
     public void ProgressDay() {
         SwitchToGameplay();
         DayManager.Instance.OnAfterFirstDay();

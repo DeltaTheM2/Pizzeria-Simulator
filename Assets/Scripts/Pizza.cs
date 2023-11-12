@@ -4,15 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Pizza 
-    { 
-
+    {
+    public static int unlockedPizza = 3;
     public enum PizzaType
     {
-        BaconPepperoni,
+     
         Cheese,
-        MeatLovers,
         Pepperoni,
         Veggie,
+        BaconPepperoni,
+        MeatLovers,
         Supreme,
         Works
     } 

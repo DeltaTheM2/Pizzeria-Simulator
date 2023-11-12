@@ -13,7 +13,10 @@ public class SeatPlacer : MonoBehaviour
         if (FundManager.Instance.funds <= 50) {
             GameManager.Instance.ToggleSeatPlacer();
         }
-
+        if(FundManager.Instance.funds <= 200)
+        {
+            GameManager.Instance.TogglePizzaUnlocker();
+        }
         if (Input.GetMouseButtonDown(0)) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
