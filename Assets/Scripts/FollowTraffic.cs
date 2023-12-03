@@ -24,7 +24,8 @@ public class FollowTraffic : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Customer" || other.tag == "Player" || other.tag == "Car")
-        {
+        {   
+            this.GetComponent<AudioSource>().Play();
             isFrontClear = false;
         }
         
