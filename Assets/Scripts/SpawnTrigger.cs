@@ -13,7 +13,7 @@ public class SpawnTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {    
         if(other.tag == "Car")
-            _isFull = false;
+            _isFull = true;
     }
 
 }

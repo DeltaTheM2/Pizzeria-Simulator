@@ -15,9 +15,12 @@ public class TrafficManager : MonoBehaviour
         if (!startingPoints[randomIndex].GetComponent<SpawnTrigger>().isFull())
         {
             GameObject randomCars = carsPrefab[Random.Range(0, carsPrefab.Count)];
-
             GameObject currentStart = startingPoints[randomIndex];
-            Instantiate(randomCars, currentStart.transform.position, Quaternion.LookRotation(finishPoints[randomIndex].transform.position - startingPoints[randomIndex].transform.position, Vector3.forward));
+
+            // Set the car's rotation to the starting point's rotation
+            Quaternion startRotation = currentStart.transform.rotation;
+
+            Instantiate(randomCars, currentStart.transform.position, startRotation);
             randomCars.GetComponent<FollowTraffic>().finishPoint = finishPoints[randomIndex];
         }
         else
@@ -25,6 +28,7 @@ public class TrafficManager : MonoBehaviour
             return;
         }
     }
+
 
     private void Update()
     {

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 {
     public Camera gameCamera;
     public Camera upgradeCamera;
+    
 
     public GameObject[] gameThings;
     public GameObject[] upgradeThings;
