@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public bool currentlyPlacingSeats;
     public int workers;
 
+    private InventoryManager im;
     private static GameManager _instance;
     public static GameManager Instance { get { return _instance; } }
 
@@ -36,10 +37,10 @@ public class GameManager : MonoBehaviour
             _instance = this;
         }
         DontDestroyOnLoad(this.gameObject);
-
+        im = this.GetComponent<InventoryManager>();
         currentlyPlacingSeats = false;
         seatPlacer.enabled = false;
-
+        im.initiateInventory();
         SwitchToGameplay();
         // SwitchToUpgrade();
     }
