@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
         }
         foreach (GameObject g in upgradeThings) {
             g.SetActive(true);
+            UpdateInventory();
         }
     }
 
@@ -78,6 +79,14 @@ public class GameManager : MonoBehaviour
         pizzaButton.interactable = !pizzaButton.interactable;
         //pizzaButton.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "All unlocked";
         pizzaButton.image.color = toggleColor;
+    }
+    public void UpdateInventory()
+    {
+        InventoryManager im = InventoryManager.Instance;
+        foreach(GameObject ing in im.ingredients)
+        {
+            ing.transform.Find("Amount").GetComponent<Slider>().value = im.inventory[ing.transform.Find("Title").GetComponent<TextMeshProUGUI>().text];
+        }
     }
     public void AddWorker() {
         if (FundManager.Instance.funds >= 100) {

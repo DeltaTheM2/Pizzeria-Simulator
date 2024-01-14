@@ -2,16 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
     //Type of Pizza and their ingredients
     Dictionary<Pizza.PizzaType, List<string>> ingredientList = new Dictionary<Pizza.PizzaType, List<string>>();
     //the amount of each item in the inventory
-    Dictionary<string, int> inventory = new Dictionary<string, int>();
+    public Dictionary<string, int> inventory = new Dictionary<string, int>();
     private static InventoryManager _instance;
     public static InventoryManager Instance { get { return _instance; } }
+    public GameObject ingredientPrefab;
+    public GameObject ingredientGrid;
+    public List<GameObject> ingredients;
 
     private void Awake()
     {
@@ -78,7 +83,7 @@ public class InventoryManager : MonoBehaviour
         });
         
         
-        inventory.Add("dough", 25);
+        inventory.Add("dough", 100);
         inventory.Add("sauce", 100);
         inventory.Add("cheese", 100);
         inventory.Add("pepperoni", 100);
@@ -86,13 +91,26 @@ public class InventoryManager : MonoBehaviour
         inventory.Add("bacon", 100);
         inventory.Add("meatballs", 100);
         inventory.Add("sausage", 100);
+        foreach(string key in inventory.Keys)
+        {
+            GameObject ingredient = Instantiate(ingredientPrefab, ingredientGrid.transform);
+            ingredient.transform.Find("Title").GetComponent<TextMeshProUGUI>().text = key;
+            ingredient.transform.Find("Amount").GetComponent<Slider>().value = inventory[key];
+            ingredient.transform.Find("Restock").GetComponent<Button>().onClick.AddListener(() => 
+            {
+                RestockIngredient(key);
+                
+            });
+            ingredients.Add(ingredient);
+
+        }
 
 
 
     }
     public void UseIngredients(Pizza.PizzaType pizzaType)
     {
-        inventory["dough"]--;
+        inventory["dough"]-= 5;
         inventory["cheese"] -= 5;
         inventory["sauce"] -= 5;
         switch (pizzaType)
@@ -131,6 +149,24 @@ public class InventoryManager : MonoBehaviour
         foreach(string key in inventory.Keys)
         {
             Debug.Log(key + " " + inventory[key]);
+        }
+    }
+    public void RestockIngredient(string ingredientName)
+    {
+        int difference = 100 - inventory[ingredientName];
+        if(FundManager.Instance.funds > difference * 2)
+        {
+            FundManager.Instance.funds -= difference * 1;
+            inventory[ingredientName] = 100;
+            UpdateSliders();
+        }
+
+    }
+    void UpdateSliders()
+    {
+        foreach(GameObject ing in ingredients)
+        {
+            ing.transform.Find("Amount").GetComponent<Slider>().value = inventory[ing.transform.Find("Title").GetComponent<TextMeshProUGUI>().text];
         }
     }
 }
