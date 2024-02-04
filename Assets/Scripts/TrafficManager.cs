@@ -18,10 +18,11 @@ public class TrafficManager : MonoBehaviour
             GameObject currentStart = startingPoints[randomIndex];
 
             // Set the car's rotation to the starting point's rotation
-            Quaternion startRotation = currentStart.transform.rotation;
+            var direction = currentStart.transform.position - finishPoints[randomIndex].transform.position;
 
-            Instantiate(randomCars, currentStart.transform.position, startRotation);
-            randomCars.GetComponent<FollowTraffic>().finishPoint = finishPoints[randomIndex];
+            GameObject randomCar = Instantiate(randomCars, currentStart.transform.position, transform.rotation);
+            randomCar.transform.LookAt(direction);
+            randomCar.GetComponent<FollowTraffic>().finishPoint = finishPoints[randomIndex];
         }
         else
         {

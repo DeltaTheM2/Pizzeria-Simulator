@@ -89,6 +89,12 @@ public class CustomerMovement : MonoBehaviour
                     //stop
                     animator.SetBool("isMoving", false);
                     animator.SetBool("isSitting", true);
+                   // Transform hip = this.transform.Find("Cube");
+                   // Transform seat = spotPos.Find("Cube");
+                   // Vector3 v1 = this.transform.position - hip.position;
+                   // Vector3 v2 = spotPos.position - seat.position;
+                    //tr1P.rotation = Quaternion.FromToRotation(v1, v2) * tr1P.rotation;
+                   // this.transform.position = seat.position + v2.normalized * v1.magnitude;
                     print(Quaternion.Euler(transform.rotation.x ,spotPos.localEulerAngles.y , spotPos.transform.rotation.z));
                     agent.updateRotation = false;
                     this.transform.rotation = Quaternion.Euler(transform.rotation.x, spotPos.transform.localEulerAngles.y, spotPos.localEulerAngles.z);

@@ -16,10 +16,13 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager Instance { get { return _instance; } }
     public GameObject ingredientPrefab;
     public GameObject ingredientGrid;
+    public GameObject deliveryTruck;
     public List<GameObject> ingredients;
+    public bool hasOrder = false;
 
     private void Awake()
     {
+        deliveryTruck.SetActive(false);
         if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
@@ -99,6 +102,7 @@ public class InventoryManager : MonoBehaviour
             ingredient.transform.Find("Restock").GetComponent<Button>().onClick.AddListener(() => 
             {
                 RestockIngredient(key);
+                hasOrder = true;
                 
             });
             ingredients.Add(ingredient);
@@ -156,7 +160,7 @@ public class InventoryManager : MonoBehaviour
         int difference = 100 - inventory[ingredientName];
         if(FundManager.Instance.funds > difference * 2)
         {
-            FundManager.Instance.funds -= difference * 1;
+            FundManager.Instance.funds -= difference * 2;
             inventory[ingredientName] = 100;
             UpdateSliders();
         }

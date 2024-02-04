@@ -46,6 +46,15 @@ public class GameManager : MonoBehaviour
     }
 
     public void SwitchToGameplay() {
+        if(im.hasOrder)
+        {
+            im.deliveryTruck.SetActive(true);
+            im.deliveryTruck.GetComponent<AudioSource>().Play();
+        }
+        else
+        {
+            im.deliveryTruck.SetActive(false);
+        }
         gameCamera.enabled = true;
         upgradeCamera.enabled = false;
 
@@ -82,7 +91,7 @@ public class GameManager : MonoBehaviour
     }
     public void UpdateInventory()
     {
-        InventoryManager im = InventoryManager.Instance;
+
         foreach(GameObject ing in im.ingredients)
         {
             ing.transform.Find("Amount").GetComponent<Slider>().value = im.inventory[ing.transform.Find("Title").GetComponent<TextMeshProUGUI>().text];
