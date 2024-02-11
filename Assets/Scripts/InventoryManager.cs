@@ -102,6 +102,7 @@ public class InventoryManager : MonoBehaviour
             ingredient.transform.Find("Restock").GetComponent<Button>().onClick.AddListener(() => 
             {
                 RestockIngredient(key);
+                UpdateTruck();
                 hasOrder = true;
                 
             });
@@ -171,8 +172,16 @@ public class InventoryManager : MonoBehaviour
         foreach(GameObject ing in ingredients)
         {
             ing.transform.Find("Amount").GetComponent<Slider>().value = inventory[ing.transform.Find("Title").GetComponent<TextMeshProUGUI>().text];
-            ing.GetComponent<SliderColor>().UpdateColor();
+            ing.GetComponentInChildren<SliderColor>().UpdateColor();
         }
+    }
+    public void UpdateTruck()
+    {
+        if(deliveryTruck.active == false)
+        {
+            deliveryTruck.SetActive(true);
+        }
+        
     }
 }
 //"dough",

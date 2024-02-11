@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
         foreach(GameObject ing in im.ingredients)
         {
             ing.transform.Find("Amount").GetComponent<Slider>().value = im.inventory[ing.transform.Find("Title").GetComponent<TextMeshProUGUI>().text];
-            ing.GetComponent<SliderColor>().UpdateColor();
+            ing.GetComponentInChildren<SliderColor>().UpdateColor();
         }
     }
     public void AddWorker() {

@@ -5,14 +5,7 @@ using UnityEngine.UI;
 
 public class SliderColor : MonoBehaviour
 {
-    private Transform slider;
-    // Start is called before the first frame update
-    void Start()
-    {
-        slider = this.transform.Find("Fill Area").Find("Fill");
-    }
-
-    // Update is called once per frame
+    public Transform slider;
     public void UpdateColor()
     {
         if(this.GetComponent<Slider>().value < 70)
