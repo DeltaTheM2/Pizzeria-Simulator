@@ -171,6 +171,7 @@ public class InventoryManager : MonoBehaviour
         foreach(GameObject ing in ingredients)
         {
             ing.transform.Find("Amount").GetComponent<Slider>().value = inventory[ing.transform.Find("Title").GetComponent<TextMeshProUGUI>().text];
+            ing.GetComponent<SliderColor>().UpdateColor();
         }
     }
 }
