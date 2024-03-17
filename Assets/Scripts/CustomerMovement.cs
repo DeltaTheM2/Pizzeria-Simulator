@@ -95,6 +95,7 @@ public class CustomerMovement : MonoBehaviour
                    // Vector3 v2 = spotPos.position - seat.position;
                     //tr1P.rotation = Quaternion.FromToRotation(v1, v2) * tr1P.rotation;
                    // this.transform.position = seat.position + v2.normalized * v1.magnitude;
+                    this.transform.position = spotPos.position;
                     print(Quaternion.Euler(transform.rotation.x ,spotPos.localEulerAngles.y , spotPos.transform.rotation.z));
                     agent.updateRotation = false;
                     this.transform.rotation = Quaternion.Euler(transform.rotation.x, spotPos.transform.localEulerAngles.y, spotPos.localEulerAngles.z);
