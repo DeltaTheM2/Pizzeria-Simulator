@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class CustomerMovement : MonoBehaviour
 {
@@ -27,9 +28,8 @@ public class CustomerMovement : MonoBehaviour
 
     public void RequestWaitingSeat() {
         Transform destinationSeat = WaitingManager.Instance.TakeSeat();
-        if (destinationSeat == null) {
-            //do something IDK
-        } else {
+        if(destinationSeat != null)
+        {
             MoveToSeat(destinationSeat);
         }
     }
@@ -95,8 +95,11 @@ public class CustomerMovement : MonoBehaviour
                    // Vector3 v2 = spotPos.position - seat.position;
                     //tr1P.rotation = Quaternion.FromToRotation(v1, v2) * tr1P.rotation;
                    // this.transform.position = seat.position + v2.normalized * v1.magnitude;
-                    this.transform.position = spotPos.position;
-                    print(Quaternion.Euler(transform.rotation.x ,spotPos.localEulerAngles.y , spotPos.transform.rotation.z));
+                   Transform parent = this.transform.parent;
+                     parent.parent = spotPos;
+                   parent.localPosition = new Vector3(spotPos.position.x, spotPos.position.y, parent.localPosition.z);
+                    //this.transform.position = new Vector3(spotPos.position.x - 0.5f, spotPos.position.y, spotPos.position.z);
+                    // print(Quaternion.Euler(transform.rotation.x ,spotPos.localEulerAngles.y , spotPos.transform.rotation.z));
                     agent.updateRotation = false;
                     this.transform.rotation = Quaternion.Euler(transform.rotation.x, spotPos.transform.localEulerAngles.y, spotPos.localEulerAngles.z);
 
