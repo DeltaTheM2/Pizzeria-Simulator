@@ -73,50 +73,42 @@ public class CustomerMovement : MonoBehaviour
         }
     }
 
-    IEnumerator MoveToSeatSpot(Transform spotPos) {
+    IEnumerator MoveToSeatSpot(Transform chairTransform) {
         agent.isStopped = false;
         agent.updateRotation = true;
         animator.SetBool("isMoving", true);
-        agent.SetDestination(spotPos.position);
+        agent.SetDestination(chairTransform.position);
 
-        while (true) {
-            if (!agent.pathPending) {
-                //if the agent is pretty close
-                if (agent.isOnNavMesh && agent.remainingDistance > agent.stoppingDistance) {
-                    //continue moving as normal
-                    yield return null;
-                } else {
-                    //stop
-                    animator.SetBool("isMoving", false);
-                    animator.SetBool("isSitting", true);
-                   // Transform hip = this.transform.Find("Cube");
-                   // Transform seat = spotPos.Find("Cube");
-                   // Vector3 v1 = this.transform.position - hip.position;
-                   // Vector3 v2 = spotPos.position - seat.position;
-                    //tr1P.rotation = Quaternion.FromToRotation(v1, v2) * tr1P.rotation;
-                   // this.transform.position = seat.position + v2.normalized * v1.magnitude;
-                   Transform parent = this.transform.parent;
-                     parent.parent = spotPos;
-                   parent.localPosition = new Vector3(spotPos.position.x, spotPos.position.y, parent.localPosition.z);
-                    //this.transform.position = new Vector3(spotPos.position.x - 0.5f, spotPos.position.y, spotPos.position.z);
-                    // print(Quaternion.Euler(transform.rotation.x ,spotPos.localEulerAngles.y , spotPos.transform.rotation.z));
-                    agent.updateRotation = false;
-                    this.transform.rotation = Quaternion.Euler(transform.rotation.x, spotPos.transform.localEulerAngles.y, spotPos.localEulerAngles.z);
+        // Wait until the NPC is close enough to the chair
+        yield return new WaitUntil(() => !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance);
 
-                    break;
-                }
-            } else {
-                yield return null;
-            }
-        }
-
-        
+        // Stop the agent and transition to sitting animation
+        agent.isStopped = true;
+        animator.SetBool("isMoving", false);
         animator.SetBool("isSitting", true);
+
+        // Disable agent's control over movement and rotation
+        agent.updatePosition = false;
+        agent.updateRotation = false;
+
+        // Manually adjust the NPC's position and rotation to match the chair's
+        // Assume 'chairTransform' has a child named 'SitPosition' which indicates the exact sitting position and rotation
+        Transform sitPosition = chairTransform.Find("SitPosition");
+        if (sitPosition != null) {
+            this.transform.position = sitPosition.position;
+            this.transform.rotation = sitPosition.rotation;
+        } else {
+            // Fallback to chair's position and rotation directly if 'SitPosition' is not set
+            this.transform.position = chairTransform.position;
+            this.transform.rotation = chairTransform.rotation;
+        }
     }
+
 
     IEnumerator PickUpAndLeave() {
         agent.isStopped = false;
         agent.updateRotation = true;
+        agent.updatePosition = true;
         animator.SetBool("isMoving", true);
         animator.SetBool("isSitting", false);
         agent.SetDestination(OrderManager.Instance.pickUpSpot.position);
