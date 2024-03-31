@@ -94,6 +94,8 @@ public class CustomerMovement : MonoBehaviour
         // Manually adjust the NPC's position and rotation to match the chair's
         // Assume 'chairTransform' has a child named 'SitPosition' which indicates the exact sitting position and rotation
         Transform sitPosition = chairTransform.Find("SitPosition");
+        // agent.transform.FindChild("SitCollider").gameObject.SetActive(true);
+        // agent.GetComponent<BoxCollider>().enabled = false;
         if (sitPosition != null) {
             this.transform.position = sitPosition.position;
             this.transform.rotation = sitPosition.rotation;
@@ -106,6 +108,8 @@ public class CustomerMovement : MonoBehaviour
 
 
     IEnumerator PickUpAndLeave() {
+        // agent.transform.FindChild("SitCollider").gameObject.SetActive(false);
+        // agent.GetComponent<BoxCollider>().enabled = true;
         agent.isStopped = false;
         agent.updateRotation = true;
         agent.updatePosition = true;

@@ -2410,8 +2410,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 1.8, z: 1}
-  m_Center: {x: 0, y: 0.9, z: 0}
+  m_Size: {x: 0.6953154, y: 1.8013527, z: 0.46339133}
+  m_Center: {x: 0.0022737086, y: 0.90999997, z: 0.040927663}
 --- !u!54 &4552142904357230914
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2441,7 +2441,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: a4c0ea6ed9ea0e54e859790b26402f87, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 

@@ -736,11 +736,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2087002219517498699}
-  - component: {fileID: 2765113761174756917}
   - component: {fileID: -8814238059213295168}
   - component: {fileID: 5338640924072677169}
   - component: {fileID: -8991607416286367388}
   - component: {fileID: 1121187936232417942}
+  - component: {fileID: 6739301375217497230}
   m_Layer: 0
   m_Name: Bryce Idle
   m_TagString: Customer
@@ -771,19 +771,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2765113761174756917
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710617830568398833}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.6, y: 1.8, z: 1}
-  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!54 &-8814238059213295168
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -856,6 +843,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.3
+--- !u!65 &6739301375217497230
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710617830568398833}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6953154, y: 1.8013527, z: 0.46339133}
+  m_Center: {x: 0.0022737086, y: 0.90999997, z: 0.040927663}
 --- !u!1 &1829339343482712294
 GameObject:
   m_ObjectHideFlags: 0
