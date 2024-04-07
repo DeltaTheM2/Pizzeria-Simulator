@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2451055924975316298}
   - component: {fileID: 8349182553817948427}
   - component: {fileID: -6112521648582385696}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Waiting Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 6771788511997726001}
   - component: {fileID: 1257683826672044320}
   - component: {fileID: 7796488402854405079}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 6762549409715141010}
   - component: {fileID: 503456120794368133}
   - component: {fileID: 7986349331717824951}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Seat.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
