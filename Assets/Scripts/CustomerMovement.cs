@@ -96,8 +96,9 @@ public class CustomerMovement : MonoBehaviour
         Transform sitPosition = chairTransform.Find("SitPosition");
         // agent.transform.FindChild("SitCollider").gameObject.SetActive(true);
         // agent.GetComponent<BoxCollider>().enabled = false;
-        if (sitPosition != null) {
-            this.transform.position = sitPosition.position;
+        if (sitPosition != null)
+        {
+            this.transform.position = new Vector3(sitPosition.position.x, 0, sitPosition.position.z);
             this.transform.rotation = sitPosition.rotation;
         } else {
             // Fallback to chair's position and rotation directly if 'SitPosition' is not set
