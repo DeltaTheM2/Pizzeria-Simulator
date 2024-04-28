@@ -8,17 +8,17 @@ public class SliderColor : MonoBehaviour
     public Transform slider;
     public void UpdateColor()
     {
-        if(this.GetComponent<Slider>().value < 70)
+        if(this.GetComponent<Slider>().value > 70)
         {
-            slider.GetComponent<Image>().color = Color.yellow;
+            slider.GetComponent<Image>().color = Color.white;
         }
-       else if(this.GetComponent<Slider>().value < 30)
+       else if(this.GetComponent<Slider>().value > 30)
         {
-            slider.GetComponent <Image>().color = Color.red;
+            slider.GetComponent <Image>().color = Color.yellow;
         }
         else
         {
-            slider.GetComponent<Image>().color = Color.white;
+            slider.GetComponent<Image>().color = Color.red;
         }
     }
 }
