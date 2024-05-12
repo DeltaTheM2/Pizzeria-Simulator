@@ -7,11 +7,11 @@ public class MainMenu : MonoBehaviour
 {
    public void NewGame()
     {
-        SceneManager.LoadScene("Start");
+        SceneManager.LoadSceneAsync("Start", LoadSceneMode.Single);
     }
     public void Continue()
     {
-        SceneManager.LoadScene("TEST");
+        SceneManager.LoadSceneAsync("TEST", LoadSceneMode.Single);
     }
     public void Quit()
     {
