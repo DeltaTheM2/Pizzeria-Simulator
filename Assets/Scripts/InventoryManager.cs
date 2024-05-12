@@ -159,9 +159,9 @@ public class InventoryManager : MonoBehaviour
     public void RestockIngredient(string ingredientName)
     {
         int difference = 100 - inventory[ingredientName];
-        if(FundManager.Instance.funds > difference * 2)
+        if(FundManager.Instance.funds > difference * 1.5f)
         {
-            FundManager.Instance.funds -= difference * 2;
+            FundManager.Instance.funds -= difference * 1.5f;
             inventory[ingredientName] = 100;
             UpdateSliders();
         }

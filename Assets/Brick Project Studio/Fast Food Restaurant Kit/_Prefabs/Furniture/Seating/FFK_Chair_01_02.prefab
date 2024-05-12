@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 7957806167225172823}
   - component: {fileID: 8169010480987926029}
   - component: {fileID: 8386050100332921186}
-  - component: {fileID: 3226526372372522583}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FFK_Chair_01_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7957806167225172823
 Transform:
@@ -86,19 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3226526372372522583
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 881939544334838205}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.852157, y: 0.7176125, z: 0.852157}
-  m_Center: {x: 0.000000074505806, y: 0.37150288, z: -0.000000044703484}
 --- !u!1 &5944154087189558018
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,13 +96,12 @@ GameObject:
   - component: {fileID: 1135710531678038328}
   - component: {fileID: 1044086325620717302}
   - component: {fileID: 2034419826207678171}
-  - component: {fileID: 7805747852260126198}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1135710531678038328
 Transform:
@@ -183,19 +168,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7805747852260126198
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5944154087189558018}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.85801107, y: 0.021299377, z: 0.85801107}
-  m_Center: {x: 0.00000008940697, y: 0.010649623, z: -0.000000029802322}
 --- !u!1 &6848067326153376415
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,12 +179,12 @@ GameObject:
   - component: {fileID: 1117491292163585893}
   - component: {fileID: 8846498402865953719}
   - component: {fileID: 3743555872249026413}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Seat.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1117491292163585893
 Transform:

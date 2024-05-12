@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 4307640417859606744}
   - component: {fileID: 2113995639561040305}
   - component: {fileID: 4183192913517467611}
-  - component: {fileID: 729866332562828930}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FFK_Stool_03_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4307640417859606744
 Transform:
@@ -85,19 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &729866332562828930
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1332404782223450563}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.6300652, y: 0.99046075, z: 0.6300652}
-  m_Center: {x: 0, y: 0.49523038, z: 0}
 --- !u!1 &7748200542224417073
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,14 +95,12 @@ GameObject:
   - component: {fileID: 7144324569869185615}
   - component: {fileID: 7455190747489268158}
   - component: {fileID: 7268919834311931362}
-  - component: {fileID: 8642204973143744079}
-  - component: {fileID: 1993163710659865903}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Seat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7144324569869185615
 Transform:
@@ -183,29 +167,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8642204973143744079
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7748200542224417073}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5620935, y: 0.05260247, z: 0.5620935}
-  m_Center: {x: 0, y: 1.0167619, z: -0.00000016391277}
---- !u!65 &1993163710659865903
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7748200542224417073}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5620935, y: 0.05260247, z: 0.5620935}
-  m_Center: {x: 0, y: 1.0167619, z: -0.00000016391277}
